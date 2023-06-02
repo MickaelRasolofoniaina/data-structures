@@ -1,3 +1,4 @@
+// Problem: check if a word is an anagram
 // Input: 2 strings (assuming they are word each, letters only and lowercase)
 // Output: boolean
 
@@ -24,3 +25,5 @@ const isValidAnagram = (word1, word2) => {
 
   return true;
 }
+
+// TO-DO: can be refactored using only 2 loop 
