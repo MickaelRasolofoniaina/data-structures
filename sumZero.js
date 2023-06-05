@@ -5,7 +5,7 @@
 // Naive
 // Complexity in time 0(n^2)
 // function sumZero(array) {
-//   for(var i = 0; i < array.length - 2; i++) {
+//   for(var i = 0; i < array.length; i++) {
 //     for (var j = i + 1; j < array.length; j++) {
 //       if(array[i] + array[j] === 0) return [array[i], array[j]];
 //     }
@@ -20,17 +20,18 @@
 // Complexity in time O(n)
 function sumZero(array) {
   var length = array.length;
+  
   var incrementedIndex = 0;
   var startIndex = incrementedIndex;
   var lastIndex = length - 1;
   var halfIndex = Math.floor((startIndex + lastIndex) / 2);
 
-  while(incrementedIndex < length - 1) {
-    if(array[incrementedIndex] + array[halfIndex] < 0) {
+  while(incrementedIndex < length) {
+    if(array[incrementedIndex] + array[halfIndex] < 0) { // Need higher number, move to right
       halfIndex = Math.round((startIndex + lastIndex) / 2);
       startIndex = halfIndex;
     }
-    else if(array[incrementedIndex] + array[halfIndex] > 0) {
+    else if(array[incrementedIndex] + array[halfIndex] > 0) { // Need lower number, move to left
       halfIndex = Math.floor((startIndex + lastIndex) / 2);
       lastIndex = halfIndex;
     }
@@ -53,3 +54,5 @@ console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]));
 console.log(sumZero([-2, 0, 1, 3]) );
 console.log(sumZero([1, 2, 3]));
 console.log(sumZero([-10, -9, -3, -2, -1, 0, 11, 20]));
+
+// TO-DO: can be refactored to a simpler solution
