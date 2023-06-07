@@ -27,19 +27,19 @@ function maxSubArraySum(array, n) {
 function maxSubArraySum(array, n) {
   if(n > array.length) return null;
 
-  var sum = 0;
   var temp = 0;
   var max = 0;
 
   for(var i = 0; i < n; i++) {
-    sum += array[i];
-    max = sum;
+    max += array[i];
   }
 
+  temp = max;
+
+  // TO-DO: Another way to refactor this loop
   for(var i = 1; i <= array.length - n; i++) {
-    temp = sum - array[i - 1] + array[i + n - 1]; 
+    temp = temp - array[i - 1] + array[i + n - 1]; 
     max = Math.max(max, temp);
-    sum = temp;
   }
 
   return max;
