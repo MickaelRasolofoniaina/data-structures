@@ -36,9 +36,8 @@ function maxSubArraySum(array, n) {
 
   temp = max;
 
-  // TO-DO: Another way to refactor this loop
-  for(var i = 1; i <= array.length - n; i++) {
-    temp = temp - array[i - 1] + array[i + n - 1]; 
+  for(var i = n; i < array.length; i++) {
+    temp = temp - array[i - n] + array[i]; 
     max = Math.max(max, temp);
   }
 
