@@ -2,21 +2,32 @@ function nestedEvenSum(obj) {
   let result = 0;
 
   function helper(obj) {
-    if(typeof obj === "object") {
-      for(const key in obj) {
+    if (typeof obj === "object") {
+      for (const key in obj) {
         helper(obj[key]);
       }
     }
-    if(typeof obj === "number") {
-      if(parseInt(obj) % 2 === 0) {
+    if (typeof obj === "number") {
+      if (parseInt(obj) % 2 === 0) {
         result += obj;
       }
     }
   }
-  
+
   helper(obj);
 
   return result;
+}
+
+function nestedEvenSum(obj, sum = 0) {
+  for (var key in obj) {
+    if (typeof obj[key] === "object") {
+      sum += nestedEvenSum(obj[key]);
+    } else if (typeof obj[key] === "number" && obj[key] % 2 === 0) {
+      sum += obj[key];
+    }
+  }
+  return sum;
 }
 
 var obj1 = {

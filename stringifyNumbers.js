@@ -5,10 +5,9 @@ function stringifyNumbers(obj) {
     if (typeof obj[key] === "number") {
       result[key] = obj[key] + "";
     } else if (typeof obj[key] === "object") {
-      if(Array.isArray(obj[key])) {
+      if (Array.isArray(obj[key])) {
         result[key] = obj[key];
-      }
-      else {
+      } else {
         result[key] = stringifyNumbers(obj[key]);
       }
     } else {
@@ -17,6 +16,20 @@ function stringifyNumbers(obj) {
   }
 
   return result;
+}
+
+function stringifyNumbers(obj) {
+  var newObj = {};
+  for (var key in obj) {
+    if (typeof obj[key] === "number") {
+      newObj[key] = obj[key].toString();
+    } else if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+      newObj[key] = stringifyNumbers(obj[key]);
+    } else {
+      newObj[key] = obj[key];
+    }
+  }
+  return newObj;
 }
 
 let obj = {
